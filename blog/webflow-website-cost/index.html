@@ -640,6 +640,134 @@ body[data-family="services"] .industry_hero { background:var(--folio); }
   .cs_gallery .cs_figure { grid-column:1; }
   .industry_cta .industry_cta_grid { gap:.9rem; }
 }
+
+/* The index artwork occupies its own column on broad screens and a top corner on phones. */
+.page_wrap .index_hero {
+  background:radial-gradient(ellipse at 84% 77%,color-mix(in srgb,var(--folio),#c4bfdc 36%),transparent 49%),
+    linear-gradient(145deg,color-mix(in srgb,var(--folio),#fffaf1 30%),var(--folio));
+}
+@media (min-width:768px) {
+  .index_hero > .u-container { grid-template-columns:minmax(0,1.55fr) minmax(0,.75fr); gap:0 4vw; }
+  .index_hero .u-container .u-eyebrow { grid-area:1/1; border-top:1px solid #636a7959; padding-top:.85rem; }
+  .index_hero .u-container .index_hero_title { grid-area:2/1; border-top:0; padding-top:.65rem; max-width:19ch; }
+  .index_hero .u-container .index_hero_intro { grid-area:3/1; }
+  .index_hero > .u-container::after {
+    grid-area:1/2/4/3; width:100%; height:100%; min-height:13rem; align-self:center; aspect-ratio:auto;
+  }
+}
+/* Pair an offer with its photograph in an asymmetric arch. Use the full text column at phone sizes. */
+.page_wrap .industry_hero {
+  background:radial-gradient(ellipse at 94% 97%,color-mix(in srgb,var(--folio),#b9b3d5 37%),transparent 59%),
+    linear-gradient(130deg,color-mix(in srgb,var(--folio),#fffaf0 30%),var(--folio));
+}
+@media (min-width:900px) {
+  .industry_hero > .u-container { width:var(--edition-width) !important; }
+  .industry_hero .industry_hero_grid { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,.75fr); align-items:center; gap:5vw; padding-block:clamp(3rem,5.5vw,6rem); }
+  .industry_hero_grid > .content_part { width:100%; margin:0; padding:0; }
+  .industry_hero_grid .industry_hero_title { font-size:clamp(3rem,5vw,5.9rem); }
+  .industry_hero_grid .industry_hero_image {
+    width:100%; height:clamp(20rem,31vw,33rem); object-fit:cover; object-position:56% center;
+    border-radius:48% 48% .65rem .65rem / 34% 34% .65rem .65rem;
+    box-shadow:.65rem .65rem 0 color-mix(in srgb,var(--folio),#7e89af 30%);
+  }
+}
+@media (max-width:899px) {
+  .industry_hero_grid .industry_hero_image { width:calc(100% - 2 * var(--gutter)); margin:0 auto; border-radius:3rem .65rem .65rem .65rem; }
+  .page_wrap .industry_hero { padding-bottom:1.5rem; }
+}
+/* Give portfolio records the scale of a case opener on the collection index. */
+[data-family="projects"] .portfolio_section .content_part .portfolio_grid.w-dyn-items { grid-template-columns:minmax(0,1fr); }
+[data-family="projects"] .portfolio_section .portfolio_item.w-dyn-item { grid-column:1/-1 !important; }
+[data-family="projects"] .portfolio_section .portfolio_card {
+  --project-paper:#e2e8f8;
+  display:grid; grid-template-columns:minmax(0,1.28fr) minmax(0,.72fr); align-items:center;
+  gap:clamp(1.4rem,4.8vw,5rem); height:auto; border-radius:clamp(1rem,2.3vw,2.2rem);
+  padding:clamp(1.4rem,4vw,4.8rem); background:linear-gradient(113deg,color-mix(in srgb,var(--project-paper),white 26%),var(--project-paper));
+}
+[data-family="projects"] .portfolio_item:nth-child(3n + 2) .portfolio_card { --project-paper:#eadab9; grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr); }
+[data-family="projects"] .portfolio_item:nth-child(3n + 2) .portfolio_image { grid-area:1/2; }
+[data-family="projects"] .portfolio_item:nth-child(3n + 2) .portfolio_card_meta { grid-area:1/1; }
+[data-family="projects"] .portfolio_item:nth-child(3n) .portfolio_card { --project-paper:#e4dcf3; }
+[data-family="projects"] .portfolio_card_meta { padding:0; }
+[data-family="projects"] .portfolio_card .portfolio_card_title { font-size:clamp(2.5rem,4.5vw,5.4rem); }
+@media (max-width:767px) {
+  [data-family="projects"] .portfolio_section .portfolio_item .portfolio_card { display:flex; align-items:stretch; gap:1rem; }
+}
+.page_wrap .cs_hero { background:linear-gradient(153deg,color-mix(in srgb,var(--case-sheet),#fff9ec 44%),var(--case-sheet) 75%); }
+@media (min-width:980px) {
+  .cs_hero > .u-container { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(0,.65fr); gap:0 5vw; }
+  .cs_hero :is(.cs_back,.u-eyebrow,.cs_title,.cs_subhead) { grid-column:1; }
+  .cs_hero .cs_facts { grid-column:2; grid-row:2/5; display:flex; flex-direction:column; align-self:end; gap:.9rem; padding:0 0 0 1.5rem; margin:0; border:0; border-left:1px solid #8a91ac; }
+}
+.page_wrap .article_header { background:radial-gradient(ellipse at 65% 100%,#dcd9ee,transparent 67%),linear-gradient(#f4eff6,#e9e5f4); }
+[data-family="about"] .home_hero_wrap,[data-family="contact"] .industry_cta { background:radial-gradient(ellipse at 75% 85%,#efc5b1,transparent 72%),#ffe1cf; }
+/* Typography stays readable while marks and illustrations come into register. */
+@keyframes studio-sheet-in {
+  from { transform:translateY(24px) rotate(-1deg) scale(.977); opacity:.68; }
+  to { transform:none; opacity:1; }
+}
+@keyframes studio-type-in {
+  from { transform:translateY(13px); opacity:.72; }
+  to { transform:none; opacity:1; }
+}
+@keyframes studio-unroll {
+  from { transform:translateX(-9%); }
+  to { transform:translateX(110%); }
+}
+@keyframes studio-rule-in { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+@keyframes studio-print-travel {
+  from { transform:translateY(16px) rotate(-2.5deg); }
+  to { transform:translateY(-14px) rotate(1.7deg); }
+}
+@media (prefers-reduced-motion:no-preference) {
+  [data-family="home"] .home_hero_art::after {
+    content:""; display:block; position:absolute; z-index:0; inset:0; pointer-events:none;
+    clip-path:none; background:linear-gradient(90deg,transparent,var(--opening-paper) 11%,var(--opening-paper));
+    animation:studio-unroll 1050ms cubic-bezier(.22,.7,.15,1) both;
+  }
+  [data-family="home"] .home_hero_art > .w-embed { z-index:1; }
+  [data-studio-enter="sheet"] { animation:studio-sheet-in 680ms cubic-bezier(.17,.75,.17,1) backwards; }
+  [data-studio-enter="type"] { animation:studio-type-in 460ms cubic-bezier(.2,.8,.2,1) backwards; }
+  .process_grid article[data-studio-enter]::after {
+    content:""; position:absolute; inset:-1px 0 auto; height:2px; background:#2c41a5;
+    transform-origin:left; animation:studio-rule-in 660ms cubic-bezier(.2,.77,.2,1) both;
+  }
+  @supports (animation-timeline:view()) {
+    [data-family="home"] .service_card::before,[data-family="home"] .home_industries_wrap .u-container::after,
+    [data-family="about"] .home_hero_grid::after,.index_hero > .u-container::after {
+      animation:studio-print-travel 1s linear both;
+      animation-timeline:view(); animation-range:entry 0% exit 100%;
+    }
+  }
+}
+@media (prefers-reduced-motion:no-preference) and (max-width:767px) {
+  [data-family="home"] .home_hero_art::after { bottom:3.65rem; }
+}
+
+/* Three pieces of the same illustration settle into registration on first sight. */
+.industry_print { display:none; }
+@keyframes studio-register {
+  from { transform:translate(var(--shift-x),var(--shift-y)) rotate(var(--tilt)); opacity:.5; }
+  to { transform:none; opacity:1; }
+}
+@media (prefers-reduced-motion:no-preference) {
+  [data-family="home"] .home_industries_wrap .u-container:has(> .industry_print)::after { display:none; }
+  .industry_print {
+    display:block; position:relative; grid-area:1/1/3/2; width:100%; min-height:1px;
+    align-self:stretch; pointer-events:none;
+  }
+  .industry_print i { position:absolute; inset:0; background:url(/dscvred-studio-redesign/_design/paper-garden.webp) center bottom / contain no-repeat; transform-origin:center 85%; }
+  .industry_print i:first-child { --shift-x:-27px; --shift-y:9px; --tilt:-3deg; clip-path:polygon(0 0,40.2% 0,30.2% 100%,0 100%); }
+  .industry_print i:nth-child(2) { --shift-x:0px; --shift-y:22px; --tilt:1deg; clip-path:polygon(40% 0,68.2% 0,75.2% 100%,30% 100%); }
+  .industry_print i:last-child { --shift-x:27px; --shift-y:-8px; --tilt:3deg; clip-path:polygon(68% 0,100% 0,100% 100%,75% 100%); }
+  .industry_print[data-studio-enter] i { animation:studio-register 800ms cubic-bezier(.18,.75,.16,1) backwards; }
+  .industry_print[data-studio-enter] i:nth-child(2) { animation-delay:60ms; }
+  .industry_print[data-studio-enter] i:last-child { animation-delay:120ms; }
+}
+@media (prefers-reduced-motion:no-preference) and (max-width:767px) {
+  .industry_print { grid-area:4/1; height:clamp(12rem,55vw,20rem); margin:.6rem 0 1.2rem; background:radial-gradient(ellipse at 55% 110%,#bacca9 0 41%,transparent 41.6%); }
+  .industry_print i { background-size:auto 99%; background-position:55% bottom; }
+}
 </style></head><body data-family="blog" data-route="/blog/webflow-website-cost"><div class="page_wrap"><a href="#main" class="skip_link">Skip to article</a><div data-mount="nav" class="content_part"><header class="nav_wrap"><div class="nav_contain"><a href="/dscvred-studio-redesign/" aria-label="Dscvred Studio home" class="w-inline-block"><img src="/dscvred-studio-redesign/_media/cdn.prod.website-files.com/6887205370981d6463bcb119/6887205370981d6463bcb1d1_Logo%20Green.svg" loading="lazy" alt="Dscvred Studio" class="nav_logo"/></a><nav id="nav-menu" aria-label="Main navigation" class="nav_links"><div class="nav_dropdown"><a tabindex="0" aria-controls="nav-services" aria-expanded="false" role="button" href="#" class="nav_dropdown_toggle w-button">Services<span aria-hidden="true" class="nav_chevron"></span></a><div id="nav-services" class="nav_dropdown_list"><a href="/dscvred-studio-redesign/services/website-design" class="nav_dropdown_link">Website Design</a><a href="/dscvred-studio-redesign/services/webflow-development" class="nav_dropdown_link">Webflow Development</a><a href="/dscvred-studio-redesign/services/ai-automation" class="nav_dropdown_link">AI Automation</a></div></div><div class="nav_dropdown"><a tabindex="0" aria-controls="nav-industries" aria-expanded="false" role="button" href="#" class="nav_dropdown_toggle w-button">Industries<span aria-hidden="true" class="nav_chevron"></span></a><div id="nav-industries" class="nav_dropdown_list"><a href="/dscvred-studio-redesign/industries/finance" class="nav_dropdown_link">Finance</a><a href="/dscvred-studio-redesign/industries/b2b-saas" class="nav_dropdown_link">B2B SaaS</a><a href="/dscvred-studio-redesign/industries/healthcare" class="nav_dropdown_link">Healthcare</a></div></div><a href="/dscvred-studio-redesign/projects" class="nav_link-1">Work</a><a href="/dscvred-studio-redesign/about" class="nav_link-1">About</a><a href="/dscvred-studio-redesign/insights" class="nav_link-1">Insights</a><a href="/dscvred-studio-redesign/faqs" class="nav_link-1">FAQs</a><a href="https://cal.com/kaleemcheema/project-discovery" target="_blank" class="nav_menu_cta">Book an intro call</a><link rel="noopener" href="https://cal.com/kaleemcheema/project-discovery"/></nav><a href="https://cal.com/kaleemcheema/project-discovery" target="_blank" class="nav_cta">Book an intro call <span aria-hidden="true"><img src="/dscvred-studio-redesign/_media/cdn.prod.website-files.com/6887205370981d6463bcb119/6aad7df4fac0eceab8370274_Icon%20%E2%80%94%20arrow%20up%20right.svg" alt="" class="native_icon_light"/></span></a><link rel="noopener" href="https://cal.com/kaleemcheema/project-discovery"/><a role="button" aria-label="Open menu" aria-controls="nav-menu" aria-expanded="false" tabindex="0" href="#" class="nav_toggle"><span class="nav_toggle_bar"></span><span class="nav_toggle_bar"></span></a></div><div class="w-embed w-script"><style>
 /* Site-wide: avoid orphan words */
 body :is(h1,h2,h3,h4){text-wrap:balance}
@@ -912,6 +1040,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .cs_copy a:hover,.cs_small a:hover,.cs_fact_value a:hover,.cs_callout a:hover,.cs_subhead a:hover,.faq_answer a:hover{text-decoration-color:#f4f1ea}
 </style>
 <script src="/dscvred-studio-redesign/_media/cdn.prod.website-files.com/6887205370981d6463bcb119%2F689e5ba67671442434f3ca35%2F6af41c6f6729af4e14a905cf%2Fhubspot_after_consent-1.0.0.js" type="text/javascript"></script><script>(() => {
+  if (!('IntersectionObserver' in window)) return;
+  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const sheets = '.proof_project_card, .service_card, .portfolio_card, .cs_figure, .industry_hero_image, .article_cover, .about_portrait';
+  const titles = '.proof_work_wrap .proof_section_heading, .section_intro_grid.is-centered, .process_grid article, .index_hero_title, .industry_hero_title, .cs_title, .article_title';
+  const directory = document.querySelector('[data-family="home"] .home_industries_wrap .industry_grid');
+  function addPrintLayers() {
+    if (!directory || directory.parentElement.querySelector('.industry_print')) return;
+    const print = document.createElement('div');
+    print.className = 'industry_print';
+    print.setAttribute('aria-hidden', 'true');
+    for (let plate = 0; plate < 3; plate++) print.append(document.createElement('i'));
+    directory.before(print);
+  }
+  let observer;
+  function configure() {
+    observer?.disconnect();
+    document.querySelectorAll('[data-studio-enter]').forEach(node => node.removeAttribute('data-studio-enter'));
+    if (preference.matches) return;
+    addPrintLayers();
+    observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const node = entry.target;
+        const entrance = node.matches('.industry_print') ? 'register' : node.matches(sheets) ? 'sheet' : 'type';
+        node.setAttribute('data-studio-enter', entrance);
+        observer.unobserve(node);
+      }
+    }, {threshold:0, rootMargin:'0px 0px -5% 0px'});
+    document.querySelectorAll(sheets + ', ' + titles + ', .industry_print').forEach(node => observer.observe(node));
+  }
+  preference.addEventListener('change', configure);
+  configure();
+})();
+</script><script>(() => {
   const contents = document.querySelector('details.article_toc_inner');
   if (!contents) return;
   const phone = window.matchMedia('(max-width: 767px)');
