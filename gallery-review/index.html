@@ -824,34 +824,6 @@ body[data-family="home"] { --opening-paper:#efedf9; }
   --gallery-rule: #9297a95c;
 }
 
-[data-family="home"] .home_hero_wrap { --opening-paper: #eeeaf9; }
-[data-family="home"] .home_hero_grid .home_hero_copy {
-  width: var(--gallery-width);
-  text-align: left;
-  align-items: flex-start;
-  padding-block: clamp(2.25rem, 3.5vw, 3.9rem) 0;
-}
-[data-family="home"] .home_hero_copy .u-text-style-h1 {
-  font-size: clamp(2.55rem, 6.85vw, 7.25rem);
-  max-width: 16ch;
-  line-height: .91;
-}
-[data-family="home"] .home_hero_copy .home_hero_actions {
-  align-items: flex-start;
-  margin-inline: 0;
-  text-align: left;
-}
-[data-family="home"] .home_hero_actions :is(.home_hero_lede, .is-hero-proof) { text-wrap: pretty; text-align: left; }
-[data-family="home"] .home_hero_grid .home_hero_art {
-  height: clamp(14rem, 30vw, 32rem);
-  margin-top: clamp(1.25rem, 2.4vw, 2.55rem);
-  background-position: center 56%;
-}
-[data-family="home"] .page_wrap .proof_logos_wrap {
-  background: var(--gallery-paper);
-  border-block-color: var(--gallery-rule);
-  padding-block: 1.2rem;
-}
 [data-family="home"] .page_wrap #why { background: var(--gallery-paper); }
 [data-family="home"] .page_wrap #why .is-split {
   grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
@@ -878,22 +850,6 @@ body[data-family="home"] { --opening-paper:#efedf9; }
   border-radius: 0;
   background: linear-gradient(130deg,#f4eed2,#e9ebd3);
 }
-@media (min-width: 960px) {
-  [data-family="home"] .home_hero_grid .home_hero_copy {
-    display: grid;
-    grid-template-columns: minmax(0,1.6fr) minmax(14rem,.66fr);
-    column-gap: clamp(2rem, 5vw, 5.5rem);
-    align-items: end;
-  }
-  [data-family="home"] .home_hero_copy .u-eyebrow { grid-column: 1/-1; }
-  [data-family="home"] .home_hero_copy .home_hero_actions { padding-bottom: .3rem; }
-}
-@media (max-width: 767px) {
-  [data-family="home"] .home_hero_grid .home_hero_art {
-    height: calc(clamp(10rem, 50vw, 18rem) + 3.65rem);
-  }
-}
-
 /* A single, browseable screening room keeps all project records in source order. */
 [data-family="home"] .page_wrap #work {
   background: radial-gradient(ellipse at 84% 8%, #475bb8, transparent 55%), var(--gallery-night);
@@ -1355,22 +1311,12 @@ body[data-family="home"] { --opening-paper:#efedf9; }
   from { transform:translateY(13px); opacity:.72; }
   to { transform:none; opacity:1; }
 }
-@keyframes studio-unroll {
-  from { transform:translateX(-9%); }
-  to { transform:translateX(110%); }
-}
 @keyframes studio-rule-in { from { transform:scaleX(0); } to { transform:scaleX(1); } }
 @keyframes studio-print-travel {
   from { transform:translateY(16px) rotate(-2.5deg); }
   to { transform:translateY(-14px) rotate(1.7deg); }
 }
 @media (prefers-reduced-motion:no-preference) {
-  [data-family="home"] .home_hero_art::after {
-    content:""; display:block; position:absolute; z-index:0; inset:0; pointer-events:none;
-    clip-path:none; background:linear-gradient(90deg,transparent,var(--opening-paper) 11%,var(--opening-paper));
-    animation:studio-unroll 1050ms cubic-bezier(.22,.7,.15,1) both;
-  }
-  [data-family="home"] .home_hero_art > .w-embed { z-index:1; }
   [data-studio-enter="sheet"] { animation:studio-sheet-in 680ms cubic-bezier(.17,.75,.17,1) backwards; }
   [data-studio-enter="type"] { animation:studio-type-in 460ms cubic-bezier(.2,.8,.2,1) backwards; }
   .process_grid article[data-studio-enter]::after {
@@ -1385,10 +1331,6 @@ body[data-family="home"] { --opening-paper:#efedf9; }
     }
   }
 }
-@media (prefers-reduced-motion:no-preference) and (max-width:767px) {
-  [data-family="home"] .home_hero_art::after { bottom:3.65rem; }
-}
-
 /* Three pieces of the same illustration settle into registration on first sight. */
 .industry_print { display:none; }
 @keyframes studio-register {

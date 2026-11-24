@@ -819,22 +819,12 @@ body[data-family="home"] { --opening-paper:#efedf9; }
   from { transform:translateY(13px); opacity:.72; }
   to { transform:none; opacity:1; }
 }
-@keyframes studio-unroll {
-  from { transform:translateX(-9%); }
-  to { transform:translateX(110%); }
-}
 @keyframes studio-rule-in { from { transform:scaleX(0); } to { transform:scaleX(1); } }
 @keyframes studio-print-travel {
   from { transform:translateY(16px) rotate(-2.5deg); }
   to { transform:translateY(-14px) rotate(1.7deg); }
 }
 @media (prefers-reduced-motion:no-preference) {
-  [data-family="home"] .home_hero_art::after {
-    content:""; display:block; position:absolute; z-index:0; inset:0; pointer-events:none;
-    clip-path:none; background:linear-gradient(90deg,transparent,var(--opening-paper) 11%,var(--opening-paper));
-    animation:studio-unroll 1050ms cubic-bezier(.22,.7,.15,1) both;
-  }
-  [data-family="home"] .home_hero_art > .w-embed { z-index:1; }
   [data-studio-enter="sheet"] { animation:studio-sheet-in 680ms cubic-bezier(.17,.75,.17,1) backwards; }
   [data-studio-enter="type"] { animation:studio-type-in 460ms cubic-bezier(.2,.8,.2,1) backwards; }
   .process_grid article[data-studio-enter]::after {
@@ -849,10 +839,6 @@ body[data-family="home"] { --opening-paper:#efedf9; }
     }
   }
 }
-@media (prefers-reduced-motion:no-preference) and (max-width:767px) {
-  [data-family="home"] .home_hero_art::after { bottom:3.65rem; }
-}
-
 /* Three pieces of the same illustration settle into registration on first sight. */
 .industry_print { display:none; }
 @keyframes studio-register {
